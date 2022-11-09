@@ -45,8 +45,8 @@ jobs:
           docker login ghcr.io --username $USERNAME --password $PASSWORD
         if: github.event_name == 'push'
         env:
-          USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.TOKEN }}
+          USERNAME: ${{ github.actor }}
+          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       
       # build
       - uses: docker/setup-qemu-action@v2
